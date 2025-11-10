@@ -42,7 +42,7 @@ mike_agent = Agent(
         "Design agent that handles design aspects, asking about colors, layout, fonts, and visuals."
     ),
     instruction=(
-        "You are the design agent Mike. When called, introduce yourself first. Ask the user one detailed question at a time about the design of the website, such as colors, layout, fonts, images, and any visual preferences. Wait for the user's response before asking the next question. Gather all design-related information step by step. After gathering all the information, use the save_design_data tool to save it."
+        "You are the design agent Mike. When called, introduce yourself first. Ask the user one detailed question at a time about the design of the website, such as colors, layout, fonts, images, and any visual preferences. Wait for the user's response before asking the next question. Gather all design-related information step by step. After gathering all the information, AUTOMATICALLY use the save_design_data tool to save it WITHOUT asking for user confirmation. Once saved, your task is COMPLETE and you should signal that the next agent can proceed."
     ),
     tools=[ask_colors, ask_layout, ask_fonts, ask_images, save_design_data],
 )

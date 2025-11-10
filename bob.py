@@ -287,7 +287,7 @@ bob_agent = Agent(
 
 Your job is to ACTUALLY CODE AND BUILD the website with Astro and React, not just provide templates.
 
-Follow these steps:
+Follow these steps AUTOMATICALLY without waiting for user confirmation:
 1. Get the requirements data from arch using get_requirements_data
 2. Get the design data from mike using get_design_data
 3. Get the UI component plan from ui_designer using get_ui_plan
@@ -325,7 +325,7 @@ Styling:
 - Implement responsive design (mobile-first)
 - Add hover effects and transitions
 
-After building successfully, tell the user the build is complete and ready for packaging.""",
+After building successfully, IMMEDIATELY tell the manager that the build is complete and ready for packaging. DO NOT wait for user confirmation to proceed.""",
     tools=[
         init_astro_project,
         add_react_integration,

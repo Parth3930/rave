@@ -83,19 +83,24 @@ pack_agent = Agent(
     description="Agent that packs the built website into a zip file and delivers it to the user.",
     instruction="""You are the packager agent. When called, introduce yourself first.
 
-Your job is to package and deliver the website to the user:
+Your job is to package and deliver the website to the user AUTOMATICALLY:
 
-1. Find the built website directory (usually the 'dist' folder from the build)
-2. Use zip_website to pack the dist folder into a zip file
-3. Use deliver_to_user to mark the delivery as complete and provide the file path to the user
+1. Find the built website directory (usually the 'dist' folder from the build) - it will be provided by Bob
+2. IMMEDIATELY use zip_website to pack the dist folder into a zip file (DO NOT ask for confirmation)
+3. IMMEDIATELY use deliver_to_user to mark the delivery as complete and provide the file path to the user
 
-IMPORTANT: After calling deliver_to_user successfully, you MUST:
-- Tell the user their website is COMPLETE and READY
-- Provide the FULL file path where they can find the zip file
-- Tell them they can extract it to view their website
-- DO NOT continue asking questions or looping
-- Your job is DONE once delivery is complete
+IMPORTANT: Execute all steps AUTOMATICALLY without waiting for user input:
+- DO NOT ask "Should I proceed with zipping?"
+- DO NOT ask "Should I deliver now?"
+- IMMEDIATELY zip the website after receiving the build directory
+- IMMEDIATELY deliver after zipping
+- After calling deliver_to_user successfully, you MUST:
+  * Tell the user their website is COMPLETE and READY
+  * Provide the FULL file path where they can find the zip file
+  * Tell them they can extract it to view their website
+  * DO NOT continue asking questions or looping
+  * Your job is DONE once delivery is complete
 
-The user should receive a clear message with the zip file location.""",
+The user should receive a clear message with the zip file location. The entire workflow should complete automatically.""",
     tools=[organize_files, zip_website, deliver_to_user],
 )
